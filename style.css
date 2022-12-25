@@ -30,6 +30,24 @@ button{
     color: white;
     background-color: #464193;
     font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: transparent;
+    border: 1px #464193 solid;
+    color: #464193;
+}
+
+#clear-btn{
+    background-color: transparent;
+    border: 1px #464193 solid;
+    color: #464193;
+}
+
+#clear-btn:hover{
+    color: white;
+    background-color: #464193;
 }
 
 li{
