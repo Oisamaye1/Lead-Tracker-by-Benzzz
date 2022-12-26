@@ -1,39 +1,46 @@
 const inputEl = document.getElementById('input-el')
 const saveLead = document.getElementById('input-btn')
 let clearLead = document.getElementById('clear-btn')
-// const container = document.getElementById('container')
+let saveTab = document.getElementById('tab-btn')
+let welcomeEl = document.getElementById('tmessage')
 const ulEL = document.getElementById('lead-list')
 let myLeads = []
-
 
 const localStorageLead = JSON.parse(localStorage.getItem('myLeads'))
 
 if (localStorageLead){
     myLeads = localStorageLead
-    renderLeads()
+    render(myLeads)
 }
 
-function renderLeads(){
+const tabs = [
+    {url: 'https://zoro.to/watch/blood-blockade-battlefront-beyond-651?ep=12245'}
+]
+
+saveTab.addEventListener('click', function(){
+    myLeads.push(tabs[0].url)
+    localStorage.setItem('myLeads', JSON.stringify(myLeads))
+    render(myLeads)
+})
+
+function render(leads){
     let listItem = ''
-    for (let i = 0; i < myLeads.length; i++){
+    for (let i = 0; i < leads.length; i++){
         listItem += 
         `<li>
-            <a href='${myLeads[i]}' target = '_blank'>
-                ${myLeads[i]}
+            <a href='${leads[i]}' target = '_blank'>
+                ${leads[i]}
             </a>
         </li>`
 }
 ulEL.innerHTML = listItem
-
-
 }
 
 
 clearLead.addEventListener('click', function(){
-    console.log("helloo")
     localStorage.clear()
     myLeads = []
-    renderLeads()
+    render(myLeads)
 })
 
 saveLead.addEventListener('click', function(){
@@ -43,6 +50,5 @@ saveLead.addEventListener('click', function(){
     }
 
     localStorage.setItem('myLeads', JSON.stringify(myLeads))
-    renderLeads()
+    render(myLeads)
 })
-

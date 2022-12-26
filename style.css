@@ -21,6 +21,7 @@ li a{
     color: #464193;
     font-size: 14px;
     font-weight: bold;
+    
 }
 
 button{
@@ -53,4 +54,3 @@ button:hover{
 li{
     list-style: none;
 }
- 
