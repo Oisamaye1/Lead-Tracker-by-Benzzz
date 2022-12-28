@@ -13,14 +13,12 @@ if (localStorageLead){
     render(myLeads)
 }
 
-const tabs = [
-    {url: 'https://zoro.to/watch/blood-blockade-battlefront-beyond-651?ep=12245'}
-]
-
 saveTab.addEventListener('click', function(){
-    myLeads.push(tabs[0].url)
-    localStorage.setItem('myLeads', JSON.stringify(myLeads))
-    render(myLeads)
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+        myLeads.push(tabs[0].url)
+        localStorage.setItem('myLeads', JSON.stringify(myLeads))
+        render(myLeads)
+    })   
 })
 
 function render(leads){
@@ -52,3 +50,5 @@ saveLead.addEventListener('click', function(){
     localStorage.setItem('myLeads', JSON.stringify(myLeads))
     render(myLeads)
 })
+
+
